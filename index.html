@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenHands Demo: Beyond the IDE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .intro-section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .differentiation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .differentiation-table th,
+        .differentiation-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .differentiation-table th {
+            background-color: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+
+        .differentiation-table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .demo-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .demo-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .demo-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .demo-card-header h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .demo-card-header .emoji {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .demo-card-body {
+            padding: 20px;
+        }
+
+        .demo-card-body h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .demo-card-body p {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .demo-card-body ul {
+            list-style-position: inside;
+            margin-bottom: 15px;
+        }
+
+        .demo-card-body li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .demo-link {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .demo-link:hover {
+            background-color: #764ba2;
+        }
+
+        .key-message {
+            background-color: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .key-message strong {
+            color: #667eea;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .wow-factor {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .comparison-highlight {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 OpenHands Demo: Beyond the IDE</h1>
+        <p>Showcasing Autonomous AI-Driven Software Development</p>
+    </header>
+
+    <div class="container">
+        <section class="intro-section">
+            <h2>What is OpenHands?</h2>
+            <p>OpenHands is an open-source, model-agnostic platform for building, deploying, and scaling autonomous AI software engineering agents. Unlike traditional AI-assisted IDEs like Cursor or Claude Code, which primarily serve as co-pilots within your development environment, OpenHands operates as a full-fledged platform that can work autonomously, integrate into CI/CD pipelines, and scale across thousands of agents.</p>
+            
+            <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 20px;">How OpenHands Differs</h3>
+            <table class="differentiation-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Cursor / Claude Code</th>
+                        <th>OpenHands</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Primary Role</strong></td>
+                        <td>AI-Assisted IDE / CLI Tool</td>
+                        <td>Autonomous Agentic Platform</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Autonomy Level</strong></td>
+                        <td>Human-in-the-loop (mostly)</td>
+                        <td>High autonomy with human oversight</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Model Lock-in</strong></td>
+                        <td>Often proprietary/locked to specific models</td>
+                        <td>Fully model-agnostic (Claude, GPT-4, Llama, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deployment Options</strong></td>
+                        <td>Local desktop only</td>
+                        <td>Local, Cloud, Enterprise, Kubernetes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extensibility</strong></td>
+                        <td>Limited plugin ecosystem</td>
+                        <td>Programmatic SDK with custom tools</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td>Single-user, single-agent</td>
+                        <td>Orchestrate 1000s of agents in parallel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Integration</strong></td>
+                        <td>Confined to IDE</td>
+                        <td>Embeddable into any application/workflow</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="intro-section">
+            <h2>The Three Form Factors</h2>
+            <p>OpenHands provides three distinct ways to interact with autonomous agents, each tailored to different use cases and workflows:</p>
+        </section>
+
+        <section class="demo-section">
+            <div class="demo-card">
+                <div class="demo-card-header">
+                    <div class="emoji">⚙️</div>
+                    <h3>CLI Demo</h3>
+                    <p>Headless Autonomy</p>
+                </div>
+                <div class="demo-card-body">
+                    <h4>The Autonomous Bug Hunter</h4>
+                    <p>OpenHands CLI operates in headless environments, perfect for automated CI/CD pipelines and backend tasks.</p>
+                    
+                    <div class="key-message">
+                        <strong>Scenario:</strong> An agent autonomously identifies, reproduces, and fixes a complex race condition across multiple files.
+                    </div>
+
+                    <h4>Why It's Different:</h4>
+                    <ul>
+                        <li>No human interaction required</li>
+                        <li>Ideal for automation and scaling</li>
+                        <li>Works in any environment (Docker, K8s, CI/CD)</li>
+                        <li>Reliable and deterministic</li>
+                    </ul>
+
+                    <div class="wow-factor">
+                        ✨ The agent fixes a multi-file bug with zero human intervention, then verifies the fix is correct.
+                    </div>
+
+                    <a href="cli_demo/cli_demo_script.md" class="demo-link">View CLI Demo Script</a>
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <div class="demo-card-header">
+                    <div class="emoji">🌐</div>
+                    <h3>Web Demo</h3>
+                    <p>Visual Workspace</p>
+                </div>
+                <div class="demo-card-body">
+                    <h4>The Full-Stack Feature Architect</h4>
+                    <p>OpenHands Web UI provides a transparent, interactive workspace where you can observe and guide agent activity in real-time.</p>
+                    
+                    <div class="key-message">
+                        <strong>Scenario:</strong> An agent researches an API, understands its documentation, and integrates it into a live web application.
+                    </div>
+
+                    <h4>Why It's Different:</h4>
+                    <ul>
+                        <li>Visual oversight of agent actions</li>
+                        <li>Multi-modal interaction (browser + code editor)</li>
+                        <li>Collaborative development experience</li>
+                        <li>Perfect for complex, exploratory tasks</li>
+                    </ul>
+
+                    <div class="wow-factor">
+                        ✨ Watch the agent browse the web, read documentation, and write code—all in one integrated interface.
+                    </div>
+
+                    <a href="web_demo/web_demo_script.md" class="demo-link">View Web Demo Script</a>
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <div class="demo-card-header">
+                    <div class="emoji">🔧</div>
+                    <h3>SDK Demo</h3>
+                    <p>Programmatic Integration</p>
+                </div>
+                <div class="demo-card-body">
+                    <h4>The Agentic Infrastructure</h4>
+                    <p>The OpenHands SDK allows you to embed autonomous agents into any application, making it a component you build with, not just a tool you use.</p>
+                    
+                    <div class="key-message">
+                        <strong>Scenario:</strong> A Python script instantiates a "Security Sentinel" agent that scans and fixes vulnerabilities in a codebase.
+                    </div>
+
+                    <h4>Why It's Different:</h4>
+                    <ul>
+                        <li>Programmatic agent orchestration</li>
+                        <li>Integrate into custom workflows</li>
+                        <li>Scale to 1000s of agents</li>
+                        <li>Build next-gen intelligent systems</li>
+                    </ul>
+
+                    <div class="wow-factor">
+                        ✨ Just a few lines of Python code instantiate a powerful agent that integrates into your CI/CD pipeline.
+                    </div>
+
+                    <a href="sdk_demo/sdk_demo_script.md" class="demo-link">View SDK Demo Script</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <h2>Key Differentiators: Why OpenHands Stands Out</h2>
+            
+            <div class="comparison-highlight">
+                <h4>1. True Autonomy</h4>
+                <p>While Cursor and Claude Code require continuous human guidance and decision-making, OpenHands agents can plan complex tasks, execute them autonomously, and verify their own work. This is the difference between having a co-pilot and having an autonomous agent.</p>
+            </div>
+
+            <div class="comparison-highlight">
+                <h4>2. Model Agnosticism</h4>
+                <p>OpenHands works with any LLM—Claude, GPT-4, Llama, Qwen, and more. You're never locked into a single model provider, ensuring you can always use the best model for your needs and adapt as the landscape evolves.</p>
+            </div>
+
+            <div class="comparison-highlight">
+                <h4>3. Open Source & Extensible</h4>
+                <p>OpenHands is fully open-source (MIT licensed). You can inspect the code, contribute to it, and extend it with custom tools and capabilities. This transparency builds trust and enables unlimited customization.</p>
+            </div>
+
+            <div class="comparison-highlight">
+                <h4>4. Deployment Flexibility</h4>
+                <p>Run OpenHands locally on your laptop, in the cloud, or in your own VPC with enterprise support. Integrate it into Docker, Kubernetes, or any infrastructure. Cursor and Claude Code are confined to your desktop.</p>
+            </div>
+
+            <div class="comparison-highlight">
+                <h4>5. Scalability</h4>
+                <p>Orchestrate thousands of agents to tackle large-scale refactors, security audits, or dependency updates across your entire codebase. This level of parallelism is impossible with traditional IDE-based tools.</p>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <h2>Getting Started</h2>
+            <p>To explore the demos, navigate to the respective directories:</p>
+            <ul style="margin-left: 20px; margin-top: 15px;">
+                <li><strong>CLI Demo:</strong> <code>cd cli_demo && python3 test_race_condition.py</code></li>
+                <li><strong>Web Demo:</strong> Open <code>web_demo/index.html</code> in your browser</li>
+                <li><strong>SDK Demo:</strong> <code>cd sdk_demo && python3 sdk_agent.py</code></li>
+            </ul>
+
+            <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 20px;">Learn More</h3>
+            <ul style="margin-left: 20px;">
+                <li><a href="https://openhands.dev/" target="_blank">OpenHands Official Website</a></li>
+                <li><a href="https://docs.openhands.dev/" target="_blank">OpenHands Documentation</a></li>
+                <li><a href="https://github.com/OpenHands/OpenHands" target="_blank">OpenHands GitHub Repository</a></li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 OpenHands Demo. Showcasing the future of autonomous software development.</p>
+    </footer>
+</body>
+</html>
