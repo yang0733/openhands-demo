@@ -4,6 +4,8 @@ import re
 
 def run_main_and_get_final_counter():
     # Reset config.py's counter for each run
+    # Assuming config.py is in the same directory as main.py
+    config_path = os.path.join(os.path.dirname(__file__), 'config.py')
     config_content = """
 import threading
 
@@ -19,10 +21,11 @@ def get_shared_resource():
 def get_resource_lock():
     return _resource_lock
 """
-    with open('config.py', 'w') as f:
+    with open(config_path, 'w') as f:
         f.write(config_content)
 
-    process = subprocess.run(['python3', 'main.py'], capture_output=True, text=True)
+    main_path = os.path.join(os.path.dirname(__file__), 'main.py')
+    process = subprocess.run(['python3', main_path], capture_output=True, text=True)
     output = process.stdout.strip()
     
     # Extract the final counter value using regex
@@ -42,13 +45,8 @@ if __name__ == "__main__":
 
     for i in range(num_runs):
         print(f"\n--- Running Test Run {i+1} ---")
-        # Temporarily change directory to run main.py
-        original_cwd = os.getcwd()
-        os.chdir('/home/ubuntu/openhands-demo/cli_demo')
         
         counter_value, output = run_main_and_get_final_counter()
-        
-        os.chdir(original_cwd)
         
         final_counters.append(counter_value)
         full_outputs.append(output)
